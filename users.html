@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+    <style>
+        .aside img {
+            width: 200px;
+            margin-top: 1rem;
+            cursor: pointer;
+        }
+        .aside img.active{
+            cursor: default;
+        }
+        li {
+            list-style: none;
+        }
+        main {
+            display: flex;
+        }
+        .content {
+            margin-left: 1rem;
+        }
+        .active {
+            filter:grayscale(1);
+        }
+    </style>
+    <script defer src="users.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Nos Users</h1>
+    </header>
+    
+    <main>
+        <div class="aside">
+            <ul id="list-users">
+                <li><img src="images/user1.png" alt="User1" class="vignette active"></li>
+                <li><img src="images/user2.png" alt="User2" class="vignette"></li>
+                <li><img src="images/user3.png" alt="User3" class="vignette"></li>
+                <li><img src="images/user4.png" alt="User4" class="vignette"></li>
+            </ul>
+        </div>
+        <div class="content">
+            <img src="images/user1.png" alt="User1" class="big">
+        </div>
+    </main>
+    <footer>
+        &copy; 2025 - Cepegra
+    </footer>
+</body>
+</html>
