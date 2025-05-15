@@ -4,8 +4,11 @@
 
  const $debug = document.querySelector('.debug')
  const $userNb = document.querySelector('.userNb')
+ const $replay = document.querySelector('.replay')
  const $userForm = document.querySelector('.userForm')
  const $notification =document.querySelector('.notification')
+ const $histoire = document.querySelector('.history')
+ const $historyListe = document.querySelector('.history-list')
 
  const nbAlea = Math.floor(Math.random() * 100) + 1
  $debug.innerText = nbAlea
@@ -16,9 +19,11 @@
   $notification.classList.remove('hidden')
   $notification.classList.add(classe)
   setTimeout (() => {
-    $notification.classList.remove('hidden')
-    $notification.classList.add(classe)
+    $notification.classList.add('hidden')
+    $notification.classList.remove(classe)
 }, 2000)
+$userForm.reset()
+
  }
 
  $userForm.addEventListener ('submit', e => {
@@ -27,10 +32,18 @@
   if ( isNaN(userNb) || userNb < 1 || userNb > 100) {
     alert('Tapez un nombre entre 1 et 100')
     return
-  } else if (userNb < nbAlea) { 
+  } else {if (userNb < nbAlea) { 
     displayNotif("Trop bas", 'is-danger')}
     else if (userNb  > nbAlea) { 
       displayNotif("Trop gros", 'is-danger')}
     else {
-      displayNotif("Gagne!!", 'is-success')}
+      displayNotif("Gagne!!", 'is-success')
+      $userNb.classList.add('hidden')
+      $replay.classList.remove('hidden')
+    }
+       
+     $histoire.classList.remove ('hidden')
+     const template = `<li>${userNb}</li>`
+     $historyListe.insertAdjacentHTML('beforeend', template)
+    }
     })
