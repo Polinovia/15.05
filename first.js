@@ -1,4 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
+const calculAge = (birthYear) => {
+  const today = new Date()
+  console.log(today)
+ return today.getFullYear - birthYear
+}
+
+
 let lastName = 'Smith\'s'
 let firstName = 'Pierre'
 let birthYear = 1969
@@ -9,7 +16,7 @@ hobbies.push('piscine')
 let conjoint = {
  firstName: "Martine",
  lastName: "VG",
- age: 56,
+ birthYear: 1976,
  insctription: false,
  hobbies: ['serie tv', 'gym'],
  address: {
@@ -18,15 +25,23 @@ let conjoint = {
    city: "Gosselies"
    }
    }
-let template = `
+   conjoint.permis = true
+   
+const template = `
 <div>
  <p>Je m'appelle ${firstName} ${lastName}</p>
- <p>J'ai ${2025-birthYear} ans</p>
+ <p>J'ai ${calculAge(birthYear)} ans</p>
+ <p>Mon compagne a ${calculAge(conjoint.birthYear)} ans</p>
  <p>Mon hobbies: ${hobbies.join(' | ')}</p>
  <p>Mon conjoint s'appeller ${conjoint.firstName} ${conjoint.lastName} </p>
 </div>
 `
-let sortie = document.querySelector('#sortie')
-console.log(sortie)
-sortie.innerHTML = template
+const $sortie = document.querySelector('#sortie')
+console.log($sortie)
+$sortie.insertAdjacentHTML('afterbegin', template)
+const $ulHobbies = $sortie.querySelector('ul')
+hobbies.forEach((hobby, index) => {
+  const template = `<li>${hobby} avez l'index ${index}</li> `
+  $ulHobbies.insertAdjacentHTML ('beforeend', template)
+})
 })
