@@ -1,3 +1,4 @@
+window.onload = function () {
 let lastName = 'Smith\'s'
 let firstName = 'Pierre'
 let birthYear = 1969
@@ -27,3 +28,4 @@ let template = `
 let sortie = document.querySelector('#sortie')
 console.log(sortie)
 sortie.innerHTML = template
+}
